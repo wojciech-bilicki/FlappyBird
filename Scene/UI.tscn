@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtsfutbumtxem"]
+
+[ext_resource type="FontFile" uid="uid://cu4lf4od2owng" path="res://Assets/font/FlappyBird.ttf" id="1_37paw"]
+[ext_resource type="Script" path="res://Scene/UI.gd" id="1_fawne"]
+[ext_resource type="Texture2D" uid="uid://x218sp1de1n0" path="res://Assets/gameover.png" id="3_wrxua"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7k0i"]
+bg_color = Color(0.94902, 0.564706, 0, 0.568627)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fawne")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+
+[node name="PointsLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_37paw")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverBox" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GameOverBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_wrxua")
+
+[node name="Panel" type="Panel" parent="MarginContainer/GameOverBox"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_l7k0i")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GameOverBox/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -20.0
+offset_right = 32.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="MarginContainer/GameOverBox/Panel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("1_37paw")
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[connection signal="pressed" from="MarginContainer/GameOverBox/Panel/MarginContainer/RestartButton" to="." method="_on_restart_button_pressed"]

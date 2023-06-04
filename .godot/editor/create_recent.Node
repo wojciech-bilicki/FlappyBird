@@ -1,0 +1,17 @@
+MarginContainer
+Button
+VBoxContainer
+Panel
+TextureRect
+CollisionShape2D
+Area2D
+Label
+CanvasLayer
+AnimationPlayer
+ColorRect
+Node
+VisibleOnScreenNotifier2D
+Sprite2D
+Timer
+CharacterBody2D
+Camera2D
